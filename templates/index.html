@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Bem-vindo ao Blogzinho! {% endblock %} </h1>
+    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5eeea355389655.59822ff824b72.gif" " width="250">
+    {% for post in posts %}
+        <a href="{{ url_for('post', post_id=post['id']) }}">
+            <h2>{{ post['title'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ post['created'] }}</span>
+        <a href="{{ url_for('edit', id=post['id']) }}">
+            <span class="badge badge-warning">Editar</span>
+        </a>
+
+        <hr>
+    {% endfor %}
+
+<a href="{{url_for('sobre', filename= 'flask_blog/templates/sobre.html')}}">    
+</a>
+<span class="badge badge-primary"></span>
+
+{% endblock %}
